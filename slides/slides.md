@@ -132,168 +132,62 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 # 我想做什么（demo）
 
-> 页面卡顿的罪魁祸首是因为v-model
+> 页面卡顿的罪魁祸首是因为v-model，相信每一个处理过类似批量修改的同学都有体会
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
+页面挂载了太多的表单组件，响应式的同时导致整个页面，输入、点击等绝大部分交互都受到影响，那么我们应该从这方便入手。
 
 ---
 preload: false
 ---
 
-# Animations
+# 如果确认优化效果？
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div 
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
+> 借助谷歌浏览器 performance 选项卡
 
 ---
 
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
+<img style="width: 600px" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200116113703372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDEzNTEyMQ==,size_16,color_FFFFFF,t_70">
 
 ---
 
-# Diagrams
+# 网页性能总览图
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+总览图包含 FPS（每秒帧数情况）、CPU（CPU占用情况）、NET（网络资源情况）、HEAP（JS占用情况）一共四项指标。
 
-<div class="grid grid-cols-2 gap-10 pt-4 -mb-6">
+* FPS：全称 Frames Per Second，表示每秒传输帧数，如下图所示，绿色竖线越高，FPS 越高。 红色表示长时间帧，可能出现卡顿。
 
-```mermaid {scale: 0.9}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
+不同帧的体验：
+帧率能够达到 50 ～ 60 FPS 的动画将会相当流畅，让人倍感舒适；
+帧率在 30 ～ 50 FPS 之间的动画，因各人敏感程度不同，舒适度因人而异；
+帧率在 30 FPS 以下的动画，让人感觉到明显的卡顿和不适感；
+帧率波动很大的动画，亦会使人感觉到卡顿。
 
 ---
-layout: center
-class: text-center
+
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200116133307949.png">
+
+* CPU 资源。此面积图指示消耗 CPU 资源的事件类型。
+
+下图中颜色分别为（与数据统计中的颜色数据表示一致）：
+* 蓝色(Loading)：表示网络通信和 HTML 解析时间。
+* 黄色(Scripting)：表示 JavaScript 执行时间。
+* 紫色(Rendering)：表示样式计算和布局（重排）时间。
+* 绿色(Painting)：表示重绘时间。
+* 灰色(other)：表示其它事件花费的时间。
+* 白色(Idle)：表示空闲时间。
+
+---
+# 各项指标的区块图
+
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200116140237757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDEzNTEyMQ==,size_16,color_FFFFFF,t_70">
+
+* Network：表示每个服务器资源的加载情况。
+* Frames：表示每幅帧的运行情况。
+* Timings：绘制时间，暂不展开
+
 ---
 
-# Learn More
+# 转至demo
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+---
+# QA

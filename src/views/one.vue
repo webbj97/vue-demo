@@ -28,7 +28,7 @@
 
 <script>
 import { list, specs } from '@/views/constants.js';
-import { debounce } from 'lodash-es';
+import { debounce, cloneDeep } from 'lodash-es';
 import Title from '@/components/title.vue';
 
 const sale = ['color', 'size', 'guige'];
@@ -56,7 +56,7 @@ export default {
 	data() {
 		return {
 			list,
-			specs,
+			specs: cloneDeep(specs),
 			sale,
 			sku,
 			saleNameMap,

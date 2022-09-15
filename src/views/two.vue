@@ -20,7 +20,7 @@
                     {{ row[code].name }}
                 </div>
                 <div class="row-body" v-for="code in sku" :key="code">
-                    <input @blur="force = ''" />
+                    <input v-model="row[code]" @blur="force = ''" />
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
 
 <script>
 import { list, specs } from '@/views/constants.js';
-import { debounce } from 'lodash-es';
+import { debounce, cloneDeep } from 'lodash-es';
 import Specs from '@/components/specs.vue';
 import Title from '@/components/title.vue';
 
@@ -56,7 +56,7 @@ export default {
     data() {
         return {
             list,
-            specs,
+            specs: cloneDeep(specs),
             sale,
             sku,
             saleNameMap,

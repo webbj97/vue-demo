@@ -10,32 +10,34 @@
             <el-switch v-model="showMerge" active-text="合并表格"></el-switch>
         </div>
 
-        <el-table :data="skuList" :span-method="showMerge ? objectSpanMethod : null" border
-            style="width: 100%; margin-top: 20px" max-height="800">
-            <el-table-column v-for="(code, index) in sale" :prop="code" :label="saleNameMap[code]" :key="code+index"
-                width="140" fixed="left">
-                <template slot-scope="scope">
-                    <span>{{scope.row[code].name}}</span>
-                </template>
-            </el-table-column>
-            <el-table-column v-for="(code, index) in sku" :prop="code" :label="skuNameMap[code]" :key="code+index"
-                width="200">
-                <template slot-scope="scope">
-                    <template v-if="showInput || force === `${scope.row.index}-${scope.column.id}`">
-                        <el-input v-model="scope.row[code]" placeholder="请输入内容"></el-input>
+        <div class="table">
+            <el-table :data="skuList" :span-method="showMerge ? objectSpanMethod : null" border
+                style="width: 100%; margin-top: 20px" max-height="800">
+                <el-table-column v-for="(code, index) in sale" :prop="code" :label="saleNameMap[code]" :key="code+index"
+                    width="140" fixed="left">
+                    <template slot-scope="scope">
+                        <span>{{scope.row[code].name}}</span>
                     </template>
-                    <template v-else>
-                        <span @click="aaa(scope)">{{scope.row[code]}}</span>
+                </el-table-column>
+                <el-table-column v-for="(code, index) in sku" :prop="code" :label="skuNameMap[code]" :key="code+index"
+                    width="200">
+                    <template slot-scope="scope">
+                        <template v-if="showInput || force === `${scope.row.index}-${scope.column.id}`">
+                            <el-input v-model="scope.row[code]" placeholder="请输入内容" @blur="force = ''"></el-input>
+                        </template>
+                        <template v-else>
+                            <span @click="aaa(scope)">{{scope.row[code]}}</span>
+                        </template>
                     </template>
-                </template>
-            </el-table-column>
-        </el-table>
+                </el-table-column>
+            </el-table>
+        </div>
     </div>
 </template>
 
 <script>
 import { list, specs } from '@/views/constants.js';
-import { debounce } from 'lodash-es';
+import { debounce, cloneDeep } from 'lodash-es';
 import Specs from '@/components/specs.vue';
 import Title from '@/components/title.vue';
 
@@ -61,7 +63,7 @@ export default {
     data() {
         return {
             list,
-            specs,
+            specs: cloneDeep(specs),
             sale,
             sku,
             saleNameMap,

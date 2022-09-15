@@ -670,6 +670,12 @@ export const specs = [
                 remark: "",
                 checked: true,
             },
+            {
+                name: "白色",
+                value: "283201",
+                remark: "",
+                checked: true,
+            },
         ],
     },
     {
@@ -686,7 +692,50 @@ export const specs = [
         values: [
             {
                 name: "155/80A/S",
-                value: -1472561148,
+                value: -14725611481,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611482,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611483,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611484,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611485,
+                remark: "",
+                checked: true,
+            },
+
+            {
+                name: "155/80A/S",
+                value: -14725611486,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611487,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611488,
                 remark: "",
                 checked: true,
             },
@@ -702,6 +751,56 @@ export const specs = [
                 group: "size",
                 checked: true,
             },
+            {
+                name: "155/80A/S",
+                value: -14725611481,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611482,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611483,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611484,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611485,
+                remark: "",
+                checked: true,
+            },
+
+            {
+                name: "155/80A/S",
+                value: -14725611486,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611487,
+                remark: "",
+                checked: true,
+            },
+            {
+                name: "155/80A/S",
+                value: -14725611488,
+                remark: "",
+                checked: true,
+            },
+
         ],
         prop_id: "20509",
         prop_code: "SPTBC050010850P00000020509",
