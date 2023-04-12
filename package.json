@@ -11,8 +11,10 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.15.10",
     "lodash-es": "^4.17.21",
+    "npm-math-start": "^1.0.0",
     "vue": "^2.6.11",
-    "vue-router": "3.5.3"
+    "vue-router": "3.5.3",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
